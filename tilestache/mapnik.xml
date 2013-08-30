@@ -22,7 +22,8 @@
     <LineSymbolizer stroke="#ccdddd" stroke-width="2" stroke-linejoin="round" />
   </Rule>
 </Style>
-<Layer name="countries"
+
+<!-- <Layer name="countries"
   status="off"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>countries-outline</StyleName>
@@ -34,7 +35,7 @@
        <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
        <Parameter name="srs"><![CDATA[+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over]]></Parameter>
     </Datasource>
-  </Layer>
+  </Layer> -->
 
 <Style name="stier" filter-mode="first" >
 </Style>
