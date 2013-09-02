@@ -2,7 +2,7 @@
 <!DOCTYPE Map[]>
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#d0dabf" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
 
-<Parameters>
+<!-- <Parameters>
   <Parameter name="bounds">-180,-85.05112877980659,180,85.05112877980659</Parameter>
   <Parameter name="center">0,0,2</Parameter>
   <Parameter name="format">png</Parameter>
@@ -11,7 +11,7 @@
   <Parameter name="name"><![CDATA[N50 for Leaflet]]></Parameter>
 </Parameters>
 
-
+ -->
 <Style name="countries" filter-mode="first" >
   <Rule>
     <PolygonSymbolizer fill="#ffffff" />
@@ -111,7 +111,7 @@
     <StyleName>sea</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
-       <Parameter name="table"><![CDATA[(SELECT * FROM arealdekkeflate WHERE objtype = 'Havflate') AS data]]></Parameter>
+       <Parameter name="table"><![CDATA[(SELECT * FROM n50_arealdekkeflate WHERE objtype = 'Havflate') AS data]]></Parameter>
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
@@ -205,7 +205,7 @@
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_vegsti WHERE vegkategori  = 'R') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[gid]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
        <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
@@ -228,7 +228,7 @@
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_vegsti WHERE vegkategori  = 'F') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[gid]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
        <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
@@ -252,7 +252,7 @@
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_vegsti WHERE vegkategori  = 'K') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[gid]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
        <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
@@ -275,7 +275,7 @@
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_vegsti WHERE motorvegtype  = 'Motorveg' or motorvegtype  = 'Motortrafikkveg') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[gid]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
        <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
@@ -307,7 +307,7 @@
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_grunnriss) AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[gid]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
        <Parameter name="extent"><![CDATA[4.6341425531269,58.0124583290681,31.1204911896627,71.1700391763523]]></Parameter>
