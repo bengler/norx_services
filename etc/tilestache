@@ -1,0 +1,52 @@
+### BEGIN INIT INFO
+# Provides:          tilestache
+# Required-Start:    $local_fs $remote_fs
+# Required-Stop:     $local_fs $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      S 0 1 6
+# Short-Description: tilestache initscript
+# Description:       tilestache
+### END INIT INFO
+
+PROG="tilestache-server"
+PROG_PATH="/home/kartverk/kartverk_vm_services/tilestache"
+USER="kartverk"
+SCRIPT_NAME="/etc/init.d/tilestache"
+PID_PATH="/var/run/"
+
+case "$1" in
+  start)
+  if [ -e "$PID_PATH/$PROG.pid" ]; then
+      ## Program is running, exit with error.
+      echo "Error! $PROG is currently running!" 1>&2
+      exit 1
+  else
+    su -l $USER -c "tilestache-server -c $PROG_PATH/tilestache.cfg -p 3001 --ip 0.0.0.0 2>&1 >/dev/null &"
+    echo "$PROG started"
+    ps aux | awk '/tilestache-server/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
+    exit 0
+  fi
+  ;;
+  stop)
+  if [ -e "$PID_PATH/$PROG.pid" ]; then
+    cat "$PID_PATH/$PROG.pid" | xargs kill -9
+    rm "$PID_PATH/$PROG.pid"
+    echo "$PROG stopped"
+  else
+    ## Program is not running, exit with error.
+    echo "Error! $PROG not started!" 1>&2
+    exit 1
+  fi
+  ;;
+  restart)
+  stop()
+  start()
+  exit 0
+  ;;
+  *)
+  echo "Usage: $SCRIPT_NAME {start|stop|restart}" >&2
+  exit 3
+  ;;
+esac
+
+:
