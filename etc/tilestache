@@ -21,7 +21,10 @@ case "$1" in
       echo "Error! $PROG is currently running!" 1>&2
       exit 1
   else
-    su -l $USER -c "tilestache-server -c $PROG_PATH/tilestache.cfg -p 3001 --ip 0.0.0.0 2>&1 >/dev/null &"
+    if [ -e "$PROG_PATH/log/$PROG.log" ]; then
+      touch $PROG_PATH/log/$PROG.log
+    fi
+    su -l $USER -c "tilestache-server -c /home/kartverk/kartverk_vm_services/tilestache/tilestache.cfg -p 3001 --ip 0.0.0.0 > $PROG_PATH/log/$PROG.log 2>&1 &"
     echo "$PROG started"
     ps aux | awk '/tilestache-server/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
     exit 0
