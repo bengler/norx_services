@@ -52,6 +52,7 @@
        <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
        <Parameter name="dbname"><![CDATA[kartverk]]></Parameter>
        <Parameter name="user"><![CDATA[kartverk]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -61,7 +62,7 @@
   </Rule>
 </Style>
 <Layer name="forest"
-  srs="+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ">
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>forest</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
@@ -69,12 +70,12 @@
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
-       <Parameter name="extent"><![CDATA[-99551.2100000009,6424129.51,1121940.59,7962743.58]]></Parameter>
+       <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
        <Parameter name="dbname"><![CDATA[kartverk]]></Parameter>
        <Parameter name="user"><![CDATA[kartverk]]></Parameter>
        <Parameter name="id"><![CDATA[forest]]></Parameter>
        <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
-       <Parameter name="srs"><![CDATA[+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -84,20 +85,20 @@
   </Rule>
 </Style>
 <Layer name="city"
-  srs="+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ">
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>city</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_arealdekkeflate WHERE objtype = 'TettBebyggelse' or objtype = 'BymessigBebyggelse') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
-       <Parameter name="extent"><![CDATA[-99551.2100000009,6424129.51,1121940.59,7962743.58]]></Parameter>
+       <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
        <Parameter name="dbname"><![CDATA[kartverk]]></Parameter>
        <Parameter name="user"><![CDATA[kartverk]]></Parameter>
        <Parameter name="id"><![CDATA[city]]></Parameter>
        <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
-       <Parameter name="srs"><![CDATA[+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -107,7 +108,7 @@
   </Rule>
 </Style>
 <Layer name="sea"
-  srs="+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ">
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>sea</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
@@ -115,12 +116,12 @@
        <Parameter name="key_field"><![CDATA[]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
-       <Parameter name="extent"><![CDATA[-99551.2100000009,6424129.51,1121940.59,7962743.58]]></Parameter>
+       <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
        <Parameter name="dbname"><![CDATA[kartverk]]></Parameter>
        <Parameter name="user"><![CDATA[kartverk]]></Parameter>
-       <Parameter name="id"><![CDATA[cities]]></Parameter>
+       <Parameter name="id"><![CDATA[sea]]></Parameter>
        <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
-       <Parameter name="srs"><![CDATA[+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -130,20 +131,20 @@
   </Rule>
 </Style>
 <Layer name="sea"
-  srs="+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ">
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>sea</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_arealdekkeflate WHERE objtype = 'Innsjø') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
-       <Parameter name="extent"><![CDATA[-99551.2100000009,6424129.51,1121940.59,7962743.58]]></Parameter>
+       <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
        <Parameter name="dbname"><![CDATA[kartverk]]></Parameter>
        <Parameter name="user"><![CDATA[kartverk]]></Parameter>
        <Parameter name="id"><![CDATA[lake]]></Parameter>
        <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
-       <Parameter name="srs"><![CDATA[+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
 
@@ -154,20 +155,20 @@
   </Rule>
 </Style>
 <Layer name="rivers_poly"
-  srs="+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ">
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>rivers_poly</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
        <Parameter name="table"><![CDATA[(SELECT * FROM n50_arealdekkeflate WHERE objtype = 'ElvBekk') AS data]]></Parameter>
-       <Parameter name="key_field"><![CDATA[]]></Parameter>
+       <Parameter name="key_field"><![CDATA[ogc_fid]]></Parameter>
        <Parameter name="geometry_field"><![CDATA[wkb_geometry]]></Parameter>
        <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
-       <Parameter name="extent"><![CDATA[-99551.2100000009,6424129.51,1121940.59,7962743.58]]></Parameter>
+       <Parameter name="extent"><![CDATA[4.59210739532305,57.9673868281622,31.1274013668407,71.1849283020175]]></Parameter>
        <Parameter name="dbname"><![CDATA[kartverk]]></Parameter>
        <Parameter name="user"><![CDATA[kartverk]]></Parameter>
-       <Parameter name="id"><![CDATA[cities]]></Parameter>
+       <Parameter name="id"><![CDATA[rivers]]></Parameter>
        <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
-       <Parameter name="srs"><![CDATA[+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs ]]></Parameter>
+       <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
 
