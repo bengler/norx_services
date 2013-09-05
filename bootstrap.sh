@@ -22,7 +22,10 @@ if [ ! -f '/home/kartverk/kartverk_vm_services/.terrafab_done' ]; then
 	touch '/home/kartverk/kartverk_vm_services/.terrafab_done'
 fi
 
+# Update and restart services
 cd terrafab
 npm install
 git pull
 cd ..
+sudo /etc/init.d/tilestache restart
+sudo /etc/init.d/terrafab restart
