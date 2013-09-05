@@ -23,6 +23,7 @@ if [ ! -f '/home/kartverk/kartverk_vm_services/.terrafab_done' ]; then
 fi
 
 # Update and restart services
+git pull
 cd terrafab
 npm install
 git pull
