@@ -2,3 +2,7 @@
 terrafab
 .terrafab_done
 .tilestache_done
+build
+log
+tilestache/cache
+tilestache/log
