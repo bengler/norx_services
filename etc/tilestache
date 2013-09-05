@@ -27,7 +27,7 @@ case "$1" in
     if [ ! -e "$PROG_PATH/log/$PROG.log" ]; then
       sudo -u $USER touch $PROG_PATH/log/$PROG.log
     fi
-    su -l $USER -c "tilestache-server.py -c /home/kartverk/kartverk_vm_services/tilestache/tilestache.cfg -p 3001 --ip 0.0.0.0 > $PROG_PATH/tilestache/log/$PROG.log 2>&1 &"
+    su -l $USER -c "tilestache-server.py -c $PROG_PATH/tilestache.cfg -p 3001 --ip 0.0.0.0 > $PROG_PATH/log/$PROG.log 2>&1 &"
     echo "$PROG started"
     ps aux | awk '/tilestache-server/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
     exit 0
