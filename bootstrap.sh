@@ -27,5 +27,11 @@ cd terrafab
 npm install
 git pull
 cd ..
+
+sudo cp ./etc/tilestache /etc/init.d
+sudo chmod 755 /etc/init.d/tilestache
+sudo cp ./etc/terrafab /etc/init.d
+sudo chmod 755 /etc/init.d/terrafab
+
 sudo /etc/init.d/tilestache restart
 sudo /etc/init.d/terrafab restart

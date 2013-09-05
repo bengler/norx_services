@@ -22,10 +22,10 @@ case "$1" in
       exit 1
   else
     if [ ! -d "$PROG_PATH/log" ]; then
-      su -l $USER mkdir "$PROG_PATH/log"
+      sudo -u $USER mkdir "$PROG_PATH/log"
     fi
     if [ ! -e "$PROG_PATH/log/$PROG.log" ]; then
-      su -l $USER touch $PROG_PATH/log/$PROG.log
+      sudo -u $USER touch $PROG_PATH/log/$PROG.log
     fi
     su -l $USER -c "tilestache-server.py -c /home/kartverk/kartverk_vm_services/tilestache/tilestache.cfg -p 3001 --ip 0.0.0.0 > $PROG_PATH/log/$PROG.log 2>&1 &"
     echo "$PROG started"
