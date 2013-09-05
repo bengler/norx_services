@@ -21,3 +21,8 @@ if [ ! -f '/home/kartverk/kartverk_vm_services/.terrafab_done' ]; then
 	sudo /etc/init.d/tilestache start
 	touch '/home/kartverk/kartverk_vm_services/.terrafab_done'
 fi
+
+cd terrafab
+npm install
+git pull
+cd ..
