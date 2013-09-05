@@ -1,42 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE Map[]>
-<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#d0dabf" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
 
-<!-- <Parameters>
-  <Parameter name="bounds">-180,-85.05112877980659,180,85.05112877980659</Parameter>
-  <Parameter name="center">0,0,2</Parameter>
-  <Parameter name="format">png</Parameter>
-  <Parameter name="minzoom">0</Parameter>
-  <Parameter name="maxzoom">22</Parameter>
-  <Parameter name="name"><![CDATA[N50 for Leaflet]]></Parameter>
-</Parameters>
+<Map
+  srs="+proj=utm +zone=33 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+  background-color="#d0dabf" maximum-extent="-20037508.34,-20037508.34,20037508.34,20037508.34">
 
- -->
-<Style name="countries" filter-mode="first" >
-  <Rule>
-    <PolygonSymbolizer fill="#ffffff" />
-  </Rule>
-</Style>
-<Style name="countries-outline" filter-mode="first" >
-  <Rule>
-    <LineSymbolizer stroke="#ccdddd" stroke-width="2" stroke-linejoin="round" />
-  </Rule>
-</Style>
-
-<!-- <Layer name="countries"
-  status="off"
-  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
-    <StyleName>countries-outline</StyleName>
-    <StyleName>countries</StyleName>
-    <Datasource>
-       <Parameter name="file"><![CDATA[/Users/even/Documents/MapBox/project/n50_selector/layers/countries/82945364-10m-admin-0-countries.shp]]></Parameter>
-       <Parameter name="type"><![CDATA[shape]]></Parameter>
-       <Parameter name="id"><![CDATA[countries]]></Parameter>
-       <Parameter name="project"><![CDATA[n50_selector]]></Parameter>
-       <Parameter name="srs"><![CDATA[+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over]]></Parameter>
-    </Datasource>
-  </Layer> -->
-
+<!--
 <Style name="stier" filter-mode="first" >
 </Style>
 <Layer name="stier"
@@ -55,6 +24,7 @@
        <Parameter name="srs"><![CDATA[+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs]]></Parameter>
     </Datasource>
   </Layer>
+-->
 
 <Style name="forest" filter-mode="first" >
   <Rule>
@@ -107,8 +77,7 @@
     <PolygonSymbolizer fill="#afd0dd" fill-opacity="1" />
   </Rule>
 </Style>
-<Layer name="sea"
-  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+<Layer name="sea" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     <StyleName>sea</StyleName>
     <Datasource>
        <Parameter name="type"><![CDATA[postgis]]></Parameter>
@@ -293,7 +262,7 @@
     <MaxScaleDenominator>5000</MaxScaleDenominator>
     <LineSymbolizer stroke="#588585" stroke-width="1" />
     <PolygonSymbolizer fill="#ccdddd" fill-opacity="1" />
-    <BuildingSymbolizer fill="#ccdddd" height="1.25" />
+    <!-- <BuildingSymbolizer fill="#ccdddd" height="1.25" /> -->
   </Rule>
   <Rule>
     <MaxScaleDenominator>400000</MaxScaleDenominator>
