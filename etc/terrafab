@@ -1,17 +1,17 @@
 ### BEGIN INIT INFO
-# Provides:          tilestache
+# Provides:          terrafab
 # Required-Start:    $local_fs $remote_fs
 # Required-Stop:     $local_fs $remote_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      S 0 1 6
-# Short-Description: tilestache initscript
-# Description:       tilestache
+# Short-Description: terrafab initscript
+# Description:       terrafab
 ### END INIT INFO
 
-PROG="tilestache-server"
-PROG_PATH="/home/kartverk/kartverk_vm_services/tilestache"
+PROG="terrafab"
+PROG_PATH="/home/kartverk/kartverk_vm_services/terrafab"
 USER="kartverk"
-SCRIPT_NAME="/etc/init.d/tilestache"
+SCRIPT_NAME="/etc/init.d/terrafab"
 PID_PATH="/var/run/"
 
 case "$1" in
@@ -22,14 +22,14 @@ case "$1" in
       exit 1
   else
     if [ ! -d "$PROG_PATH/log" ]; then
-      su -l $USER mkdir "$PROG_PATH/log"
+      sudo -u $USER mkdir "$PROG_PATH/log"
     fi
     if [ ! -e "$PROG_PATH/log/$PROG.log" ]; then
-      su -l $USER touch $PROG_PATH/log/$PROG.log
+      sudo -u $USER touch $PROG_PATH/log/$PROG.log
     fi
-    su -l $USER -c "tilestache-server.py -c /home/kartverk/kartverk_vm_services/tilestache/tilestache.cfg -p 3001 --ip 0.0.0.0 > $PROG_PATH/log/$PROG.log 2>&1 &"
+    su -l $USER -c "cd /home/kartverk/kartverk_vm_services/terrafab && node /home/kartverk/kartverk_vm_services/terrafab/server.js > $PROG_PATH/log/$PROG.log 2>&1 &"
     echo "$PROG started"
-    ps aux | awk '/tilestache-server/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
+    ps aux | awk '/terrafab\/server.js/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
     exit 0
   fi
   ;;
