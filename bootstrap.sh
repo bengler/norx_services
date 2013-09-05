@@ -19,5 +19,5 @@ if [ ! -f '/home/kartverk/done_packages' ]; then
 	sudo cp ./etc/terrafab /etc/init.d
 	sudo chmod 755 /etc/init.d/terrafab
 	sudo /etc/init.d/tilestache start
-	touch '/home/kartverk/kartverk_vm_services/tilestache_done'
+	touch '/home/kartverk/kartverk_vm_services/terrafab_done'
 fi
