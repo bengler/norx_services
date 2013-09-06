@@ -9,7 +9,7 @@ def main(argv):
   try:
     opts, args = getopt.getopt(argv,"hi:o:s:b:",["ifile=","ofile=","outsize","box"])
   except getopt.GetoptError:
-    print 'mapbox.py -i <inputfile> -o <outputfile> -s'
+    print 'mapbox.py -i <inputfile> -o <outputfile> --outsize <png dimensions> --box <coords>'
     sys.exit(2)
   for opt, arg in opts:
     if opt == '-h':
