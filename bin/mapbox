@@ -6,8 +6,10 @@ import sys, getopt
 def main(argv):
   inputfile = ''
   outputfile = ''
+  outsize = []
+  box = []
   try:
-    opts, args = getopt.getopt(argv,"hi:o:s:b:",["ifile=","ofile=","outsize","box"])
+    opts, args = getopt.getopt(argv,"hi:o:s:b:",["ifile=","ofile=","outsize=","box="])
   except getopt.GetoptError:
     print 'mapbox.py -i <inputfile> -o <outputfile> --outsize <png dimensions> --box <coords>'
     sys.exit(2)
@@ -20,9 +22,9 @@ def main(argv):
     elif opt in ("-o", "--ofile"):
       outputfile = arg
     elif opt in ("-s", "--outsize"):
-      outsize = arg.split(",")
+      outsize = [int(n) for n in arg.split(',')]
     elif opt in ("-b", "--box"):
-      box = arg.split(",")
+      box = [float(n) for n in arg.split(',')]
 
   map = mapnik.Map(outsize[0], outsize[1])
   mapnik.load_map(map, inputfile)
