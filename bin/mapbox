@@ -13,7 +13,7 @@ def main(argv):
     sys.exit(2)
   for opt, arg in opts:
     if opt == '-h':
-      print 'mapbox.py -i <inputfile> -o <outputfile>'
+      print 'mapbox.py -i <inputfile> -o <outputfile> --outsize <png dimensions> --box <coords>'
       sys.exit()
     elif opt in ("-i", "--ifile"):
       inputfile = arg
