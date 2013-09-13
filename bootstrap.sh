@@ -22,6 +22,28 @@ if [ ! -f '/home/kartverk/kartverk_vm_services/.terrafab_done' ]; then
 	touch '/home/kartverk/kartverk_vm_services/.terrafab_done'
 fi
 
+if [ ! -f '/home/kartverk/kartverk_vm_services/.elasticsearch_done' ]; then
+	echo "Setting up elastic search postgres bindings"
+	# IN CASE YOU WANT TO DELETE: curl -XDELETE 'localhost:9200/_river' && curl -XDELETE 'localhost:9200/stedsnavn'
+	curl -XPUT 'localhost:9200/_river/adm_areas_kommuner_river/_meta' -d '{
+	    "type" : "jdbc",
+	    "jdbc" : {
+	        "driver" : "org.postgresql.Driver",
+	        "url" : "jdbc:postgresql://localhost:5432/kartverk",
+	        "user" : "kartverk",
+	        "password" : "bengler",
+	        "sql" : "select navn as name, st_asgeojson(st_centroid(wkb_geometry)) as point, objtype from adm_areas_kommuner"
+
+	    },
+	      "index" : {
+	          "index" : "stedsnavn",
+	          "type" : "jdbc"
+	      }
+	}'
+
+	touch '/home/kartverk/kartverk_vm_services/.elasticsearch_done'
+fi
+
 # Update and restart services
 git pull
 cd terrafab
