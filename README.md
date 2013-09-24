@@ -1,6 +1,6 @@
-# Kartverk VM services
+# Norx VM services
 
-Set up services on the Kartverk VM.
+Set up services on the Norx – Norway in a Box – virtual machine.
 
 ## Mode of operation
 
