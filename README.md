@@ -4,7 +4,9 @@ Set up services on the Kartverk VM.
 
 ## Mode of operation
 
-```./bootstrap.sh```
+```
+./bootstrap.sh
+```
 
 sets up Tilestache as a service on the VM. Upon completion you should be able to browse the map from:
 
