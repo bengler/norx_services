@@ -24,8 +24,9 @@ fi
 if [ ! -f '.done_elasticsearch' ]; then
 	echo "Setting up elastic search postgres bindings"
 	
-  # IN CASE YOU WANT TO DELETE THE RIVER AND INDEX: curl -XDELETE 'localhost:9200/_river' && curl -XDELETE 'localhost:9200/places'
-  # curl -X PUT localhost:9200/places
+  curl -XDELETE 'localhost:9200/_river' && curl -XDELETE 'localhost:9200/places'
+  
+  curl -X PUT localhost:9200/places
 
   curl -XPUT localhost:9200/places/place/_mapping -d "{
     \"place\":{
