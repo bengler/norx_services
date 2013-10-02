@@ -24,7 +24,8 @@ fi
 if [ ! -f '.done_elasticsearch' ]; then
 	echo "Setting up Elastic Search postgres bindings and index"
 	
-  curl --silent  -XDELETE 'localhost:9200/_river' && curl --quiet -XDELETE 'localhost:9200/places'
+  curl --silent  -XDELETE 'localhost:9200/_river'
+  curl --silent -XDELETE 'localhost:9200/places'
   
   curl --silent -X PUT localhost:9200/places
 
@@ -63,30 +64,14 @@ if [ ! -f '.done_elasticsearch' ]; then
       }
   }"
 
-  echo "Testing Elastic Search index"
-  curl -XGET localhost:9200/places/_suggest -d '{
-      "place-suggest" : {
-        "text" : "n",
-        "completion" : {
-          "field" : "suggest"
-        }
-      }
-  }'
+  # curl -XGET localhost:9200/places/_suggest -d '{
+  #     "place-suggest" : {
+  #       "text" : "n",
+  #       "completion" : {
+  #         "field" : "suggest"
+  #       }
+  #     }
+  # }'
 
 	touch '.done_elasticsearch'
 fi
-
-# Update and restart services
-git pull
-cd leaflet
-sudo -u norx npm --silent install
-git pull
-cd ..
-
-cp ./etc/tilestache /etc/init.d
-chmod 755 /etc/init.d/tilestache
-cp ./etc/leaflet /etc/init.d
-chmod 755 /etc/init.d/leaflet
-
-/etc/init.d/tilestache restart
-/etc/init.d/leaflet restart
