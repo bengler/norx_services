@@ -78,7 +78,7 @@ fi
 # Update and restart services
 git pull
 cd leaflet
-npm --silent install
+sudo -u norx npm --silent install
 git pull
 cd ..
 
