@@ -9,8 +9,8 @@
 ### END INIT INFO
 
 PROG="tilestache-server"
-PROG_PATH="/home/kartverk/kartverk_vm_services/tilestache"
-USER="kartverk"
+PROG_PATH="/home/norx/services/tilestache"
+USER="norx"
 SCRIPT_NAME="/etc/init.d/tilestache"
 PID_PATH="/var/run/"
 

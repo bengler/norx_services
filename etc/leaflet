@@ -1,17 +1,17 @@
 ### BEGIN INIT INFO
-# Provides:          terrafab
+# Provides:          leaflet
 # Required-Start:    $local_fs $remote_fs
 # Required-Stop:     $local_fs $remote_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      S 0 1 6
-# Short-Description: terrafab initscript
-# Description:       terrafab
+# Short-Description: leaflet initscript
+# Description:       leaflet
 ### END INIT INFO
 
-PROG="terrafab"
-PROG_PATH="/home/kartverk/kartverk_vm_services/terrafab"
-USER="kartverk"
-SCRIPT_NAME="/etc/init.d/terrafab"
+PROG="leaflet"
+PROG_PATH="/home/norx/services/leaflet"
+USER="norx"
+SCRIPT_NAME="/etc/init.d/leaflet"
 PID_PATH="/var/run/"
 
 case "$1" in
@@ -27,9 +27,9 @@ case "$1" in
     if [ ! -e "$PROG_PATH/log/$PROG.log" ]; then
       sudo -u $USER touch $PROG_PATH/log/$PROG.log
     fi
-    su -l $USER -c "cd /home/kartverk/kartverk_vm_services/terrafab && node /home/kartverk/kartverk_vm_services/terrafab/server.js > $PROG_PATH/log/$PROG.log 2>&1 &"
+    su -l $USER -c "cd $PROG_PATH && node server.js > log/$PROG.log 2>&1 &"
     echo "$PROG started"
-    ps aux | awk '/terrafab\/server.js/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
+    ps aux | awk '/$PROG\/server.js/ {print $2}' | head -1 > "$PID_PATH/$PROG.pid"
     exit 0
   fi
   ;;
