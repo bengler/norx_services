@@ -22,13 +22,13 @@ if [ ! -f '.done_leaflet' ]; then
 fi
 
 if [ ! -f '.done_elasticsearch' ]; then
-	echo "Setting up elastic search postgres bindings"
+	echo "Setting up Elastic Search postgres bindings and index"
 	
-  curl --quiet  -XDELETE 'localhost:9200/_river' && curl --quiet -XDELETE 'localhost:9200/places'
+  curl --silent  -XDELETE 'localhost:9200/_river' && curl --quiet -XDELETE 'localhost:9200/places'
   
-  curl --quiet -X PUT localhost:9200/places
+  curl --silent -X PUT localhost:9200/places
 
-  curl --quiet -XPUT localhost:9200/places/place/_mapping -d "{
+  curl --silent -XPUT localhost:9200/places/place/_mapping -d "{
     \"place\":{
       \"properties\":{
         \"name\" : { \"type\" : \"string\" },
@@ -47,7 +47,7 @@ if [ ! -f '.done_elasticsearch' ]; then
 
 
   SQL="SELECT 'places' as _index, ssr.enh_snavn as \\\"place.name\\\", ssr.ogc_fid as _id, split_part(substring(ST_AsText(ssr.wkb_geometry), '\\\(([^\\\)]+)\\\)'), ' ', 1) as \\\"place.point.lng\\\", split_part(substring(ST_AsText(ssr.wkb_geometry), '\\\(([^\\\)]+)\\\)'), ' ', 2) as \\\"place.point.lat\\\", ssr.enh_navntype as \\\"place.kind\\\", adm_areas_kommuner.navn as \\\"place.parent_name\\\", ssr.enh_snavn || ' ' || adm_areas_kommuner.navn as \\\"suggest.input\\\", ssr.enh_snavn || ' (' || adm_areas_kommuner.navn || ')' as \\\"suggest.output\\\", split_part(substring(ST_AsText(ssr.wkb_geometry), '\\\(([^\\\)]+)\\\)'), ' ', 1) as \\\"suggest.payload.lng\\\", split_part(substring(ST_AsText(ssr.wkb_geometry), '\\\(([^\\\)]+)\\\)'), ' ', 2) as \\\"suggest.payload.lat\\\", ssr.enh_navntype, CASE WHEN ssr.enh_navntype IN(181,182,268,269,270,266) THEN 20 WHEN ssr.enh_navntype IN(101, 104, 108) THEN 10 ELSE 1 END as \\\"suggest.weight\\\" FROM ssr left join adm_areas_kommuner on ST_Within(ssr.wkb_geometry, adm_areas_kommuner.wkb_geometry)"
-  curl --quiet -XPUT 'localhost:9200/_river/places_suggest_river/_meta' -d "{
+  curl --silent -XPUT 'localhost:9200/_river/places_suggest_river/_meta' -d "{
       \"type\" : \"jdbc\",
       \"jdbc\" : {
           \"driver\" : \"org.postgresql.Driver\",
@@ -63,15 +63,15 @@ if [ ! -f '.done_elasticsearch' ]; then
       }
   }"
 
-  # Test the index:
-  # curl -XGET localhost:9200/places/_suggest -d '{
-  #     "place-suggest" : {
-  #       "text" : "n",
-  #       "completion" : {
-  #         "field" : "suggest"
-  #       }
-  #     }
-  # }'
+  echo "Testing Elastic Search index"
+  curl -XGET localhost:9200/places/_suggest -d '{
+      "place-suggest" : {
+        "text" : "n",
+        "completion" : {
+          "field" : "suggest"
+        }
+      }
+  }'
 
 	touch '.done_elasticsearch'
 fi
