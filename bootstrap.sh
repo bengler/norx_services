@@ -13,7 +13,7 @@ if [ ! -f '.done_leaflet' ]; then
   sudo -u norx mkdir leaflet
 	sudo -u norx git clone git://github.com/bengler/norx_leaflet.git leaflet
 	cd leaflet
-	sudo -u norx npm install
+  sudo -u norx npm install
   chown norx *
 	cd ..
 	cp ./etc/leaflet /etc/init.d
