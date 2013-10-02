@@ -1,4 +1,5 @@
 #!/bin/bash
+name="$1"
 
 if [ ! -f '.done_tilestache' ]; then
 	echo  "Setting up Tilestache"
@@ -10,11 +11,11 @@ fi
 
 if [ ! -f '.done_leaflet' ]; then
 	echo  "Setting up Leaflet demo app"
-  sudo -u norx mkdir leaflet
-	sudo -u norx git clone git://github.com/bengler/norx_leaflet.git leaflet
+  sudo -u $name mkdir leaflet
+	sudo -u $name git clone git://github.com/bengler/$name_leaflet.git leaflet
 	cd leaflet
   npm --silent install
-  chown -R norx *
+  chown -R $name *
 	cd ..
 	cp ./etc/leaflet /etc/init.d
 	chmod 755 /etc/init.d/leaflet
