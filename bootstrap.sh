@@ -78,13 +78,13 @@ fi
 # Update and restart services
 git pull
 cd leaflet
-npm install
+npm --silent install
 git pull
 cd ..
 
 cp ./etc/tilestache /etc/init.d
 chmod 755 /etc/init.d/tilestache
-cp ./etc/leafletapp /etc/init.d
+cp ./etc/leaflet /etc/init.d
 chmod 755 /etc/init.d/leaflet
 
 /etc/init.d/tilestache restart
