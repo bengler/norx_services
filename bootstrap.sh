@@ -1,27 +1,27 @@
 #!/bin/bash
 
-if [ ! -f '/home/norx/services/.done_tilestache' ]; then
+if [ ! -f '.done_tilestache' ]; then
 	echo  "Setting up Tilestache"
-	sudo cp ./etc/tilestache /etc/init.d
-	sudo chmod 755 /etc/init.d/tilestache
-	sudo /etc/init.d/tilestache start
-	touch '/home/norx/services/.done_tilestache'
+	cp ./etc/tilestache /etc/init.d
+	chmod 755 /etc/init.d/tilestache
+	/etc/init.d/tilestache start
+	touch '.done_tilestache'
 fi
 
-if [ ! -f '/home/norx/services/.done_leaflet' ]; then
+if [ ! -f '.done_leaflet' ]; then
 	echo  "Setting up Leaflet demo app"
-  mkdir leaflet
-	git clone git://github.com/bengler/norx_leaflet.git leaflet
+  sudo -u norx mkdir leaflet
+	sudo -u norx git clone git://github.com/bengler/norx_leaflet.git leaflet
 	cd leaflet
-	npm install
+	sudo -u norx npm install
 	cd ..
-	sudo cp ./etc/leaflet /etc/init.d
-	sudo chmod 755 /etc/init.d/leaflet
-	sudo /etc/init.d/leaflet start
-	touch '/home/norx/services/.done_leaflet'
+	cp ./etc/leaflet /etc/init.d
+	chmod 755 /etc/init.d/leaflet
+	/etc/init.d/leaflet start
+	touch '.done_leaflet'
 fi
 
-if [ ! -f '/home/norx/services/.done_elasticsearch' ]; then
+if [ ! -f '.done_elasticsearch' ]; then
 	echo "Setting up elastic search postgres bindings"
 	
   # IN CASE YOU WANT TO DELETE THE RIVER AND INDEX: curl -XDELETE 'localhost:9200/_river' && curl -XDELETE 'localhost:9200/places'
@@ -72,7 +72,7 @@ if [ ! -f '/home/norx/services/.done_elasticsearch' ]; then
   #     }
   # }'
 
-	touch '/home/norx/services/.done_elasticsearch'
+	touch '.done_elasticsearch'
 fi
 
 # Update and restart services
@@ -82,10 +82,10 @@ npm install
 git pull
 cd ..
 
-sudo cp ./etc/tilestache /etc/init.d
-sudo chmod 755 /etc/init.d/tilestache
-sudo cp ./etc/leafletapp /etc/init.d
-sudo chmod 755 /etc/init.d/leaflet
+cp ./etc/tilestache /etc/init.d
+chmod 755 /etc/init.d/tilestache
+cp ./etc/leafletapp /etc/init.d
+chmod 755 /etc/init.d/leaflet
 
-sudo /etc/init.d/tilestache restart
-sudo /etc/init.d/leaflet restart
+/etc/init.d/tilestache restart
+/etc/init.d/leaflet restart
