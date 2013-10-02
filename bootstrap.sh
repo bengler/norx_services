@@ -14,6 +14,7 @@ if [ ! -f '.done_leaflet' ]; then
 	sudo -u norx git clone git://github.com/bengler/norx_leaflet.git leaflet
 	cd leaflet
 	sudo -u norx npm install
+  chown norx *
 	cd ..
 	cp ./etc/leaflet /etc/init.d
 	chmod 755 /etc/init.d/leaflet
@@ -24,7 +25,7 @@ fi
 if [ ! -f '.done_elasticsearch' ]; then
 	echo "Setting up Elastic Search postgres bindings and index"
 	
-  curl --silent  -XDELETE 'localhost:9200/_river'
+  curl --silent -XDELETE 'localhost:9200/_river'
   curl --silent -XDELETE 'localhost:9200/places'
   
   curl --silent -X PUT localhost:9200/places
